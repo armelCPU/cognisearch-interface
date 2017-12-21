@@ -1,4 +1,4 @@
-# cognisearch-ui
+# cognisearch-interface
 
 > A Vue.js project
 
