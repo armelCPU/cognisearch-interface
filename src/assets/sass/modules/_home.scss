@@ -1,0 +1,282 @@
+.home-page {
+
+    .home-intro {
+        width: 100%;
+        min-height: 700px;
+        background-image: url('/assets/img/home.jpg');
+        background-position: right;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 80px;
+
+        .slogan {
+            margin-top:-30px;
+            font-size: 16px;
+            font-weight: 300;
+            color: white;
+            font-family: Athiti, 'Source Sans Pro', Calibri, sans-serif;
+        }
+
+
+        .hook {
+            text-align: center;
+            margin-top: 100px;
+            color: white;
+
+
+            h1 {
+                font-weight: 500;
+                font-size: 40px;
+                margin-bottom: 20px;
+                font-family: Athiti, 'Source Sans Pro', Calibri, sans-serif;
+            }
+
+            h4 {
+                font-weight: 500;
+                font-size: 20px;
+            }
+        }
+
+        .home-search {
+            background-color: transparent;
+            margin-top: 80px;
+
+            .search-container {
+                background-color: rgba(60, 71, 91, 0.3);
+                padding: 20px 30px;
+                border-radius: 2px;
+                border:1px solid $color-teal;
+                text-align: left;
+
+                .form {
+                    margin-top: 20px;
+                    padding: 0;
+
+                    .input-group {
+                        padding: 0;
+                        margin-bottom: 20px;
+
+                        &.input-lg {
+                            .form-control, .btn {
+                                height: 60px;
+                                &:focus {
+                                    outline: none;
+                                    border: none;
+                                }
+                            }
+
+                            .btn {
+                                padding-left: 50px;
+                                padding-right: 50px;
+                            }
+                        }
+                    }
+
+                    .show-more-lines {
+                        text-align: left;
+                        font-size: 16px;
+                        margin-top: 20px;
+                        color: white;
+
+                        a {color: white;}
+                    }
+
+                    .more-lines {
+                        margin-top:20px;
+                        color: white;
+                    }
+
+                }
+            }
+
+            @media (max-width: $screen-sm) {
+                .search-container {
+                    background-color: transparent;
+                    padding: 0;
+                    border-radius: 0px;
+                    border:0px;
+                }
+            }
+        }
+
+        .cta {
+            margin-top: 60px;
+            color: white;
+            text-align: center;
+
+            .btn {
+                height: 50px;
+                line-height: 30px;
+                width: 250px;
+                text-transform: uppercase;
+                font-size: 16px;
+            }
+
+            h4 {
+                font-size: 16px;
+                margin-top: 20px;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+        }
+
+    }
+
+
+    .home-quote {
+        padding: 80px 0;
+        width: 100%;
+        position: relative;
+        margin-top: -40px;
+        background-color: $body-bg;
+        @include skewY(3deg);
+
+        .container {
+            @include skewY(-3deg);
+            z-index: 2;
+        }
+
+        blockquote {
+            font-size: 2.2em;
+            font-weight: 300;
+            color: $color-dark;
+        }
+    }
+
+
+
+    .home-tutors {
+        padding: 60px 0;
+        width: 100%;
+        background-color: white;
+        position: relative;
+        margin-top: -40px;
+        box-shadow: 2px 8px 15px rgba(0,0,0,0.03);
+        @include skewY(3deg);
+
+        .container {
+            @include skewY(-3deg);
+            z-index: 2;
+        }
+
+        h2 {
+            font-family: Athiti, 'Open Sans', Calibri, sans-serif;
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 22px;
+            color: $color-purple;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 18px;
+            margin: 0;
+            font-family: Athiti, 'Open Sans', Calibri, sans-serif;
+            color: $color-teal;
+            // color: #3c475b;
+        }
+    }
+
+
+    .home-reasons {
+        padding: 40px 0;
+        width: 100%;
+        font-size: 20px;
+        background-size: cover;
+        background-image: url('/assets/img/bg-green.jpg');
+        margin-top: -40px;
+
+        h1 {
+            color: white;
+            font-weight: 500;
+            font-family: Athiti, 'Open Sans', Calibri, sans-serif;
+        }
+
+        .raisons {
+            padding: 20px 0;
+            width: 100%;
+
+            li {
+                width: 100%;
+                padding: 13px 20px;
+                background-color: white;
+                border: 1px solid #e6e9ed;
+                margin-bottom: 4px;
+            }
+        }
+    }
+
+
+    .home-how {
+        padding: 10px 0;
+        width: 100%;
+        font-size: 20px;
+        margin-bottom: 60px;
+        // background-color: white;
+
+        h1 {
+            color: $color-purple;
+            font-weight: 600;
+            font-family: Athiti, 'Open Sans', Calibri, sans-serif;
+            margin-bottom: 60px;
+        }
+
+        .how-card {
+            background-color: white;
+            box-shadow: 0px 3px 12px 0px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            padding-bottom: 40px;
+            margin-bottom: 20px;
+
+            .btn {
+                padding: 15px 30px;
+                font-size: 16px;
+                font-weight: 400;
+            }
+
+            h4 {
+                font-family: Athiti, 'Open Sans', Calibri, sans-serif;
+                font-size: 20px;
+                font-weight: 500;
+                text-align: center;
+                padding: 0;
+                margin: 0;
+                color: $color-blue-presumi;
+            }
+
+            .card-desc {
+                border-radius: 4px;
+                font-size: 17px;
+                margin-top: 20px;
+                color: $color-teal;
+                font-weight: 400;
+            }
+
+            .image {
+                width: 180px;
+                margin:10px auto;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            &.green {
+                margin-top:30px;
+                h4 {color: $color-greener;}
+                .image {width: 150px}
+            }
+
+            &.purple {
+                margin-top:30px;
+                h4 {color: $color-purple;}
+                .image {width: 150px}
+            }
+        }
+    }
+
+
+}

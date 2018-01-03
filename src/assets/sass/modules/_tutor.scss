@@ -1,0 +1,190 @@
+.tutor-profile {
+    padding-top: 150px;
+
+    .left {
+        margin-bottom: 20px;
+
+        .image {
+            width: 150px;
+            height: 150px;
+            float: left;
+            margin-right: 10px;
+
+            @media (max-width: 480px) {
+                width: 120px;
+                height: 120px;
+            }
+
+            img {
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+
+        .user-id {
+            padding-top: 10px;
+
+            .name {
+                font-size: 30px;
+                font-weight: 500;
+                color: $color-dark;
+                font-family: 'Maven Pro', 'Source Sans Pro', Calibri;
+                margin: 0;
+                padding: 0;
+            }
+
+            .user-metas {
+                font-size: 16px;
+                color: $color-dark;
+                font-weight: 500;
+
+                .price {
+                    font-size: 22px;
+                    margin-top:10px;
+                    font-weight: bold;
+                    font-family: 'Josefin Slab', Calibri;
+
+                    span {
+                        font-size: 14px;
+                        font-family: 'Maven Pro', 'Source Sans Pro', Calibri;
+                        font-weight: 400;
+                    }
+                }
+            }
+
+            .verified {
+                padding: 3px 5px;
+                background-color: $color-blue-presumi;
+                color: white;
+                border-radius: 50%;
+                font-size: 10px;
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 5px;
+            }
+
+            @media (max-width: 480px) {
+                padding-top: 5px;
+                .name {
+                    font-size: 25px;
+                }
+                .verified {
+                    font-size: 8px;
+                }
+            }
+
+        }
+
+        .details {
+            margin-top:20px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+            font-family: 'Maven Pro', 'Source Sans Pro', Calibri;
+
+            i {margin-right: 10px;}
+
+            @media (max-width: $screen-sm) {
+                margin-top: 10px;
+            }
+        }
+
+    }
+
+    .right {
+
+        .fav {
+            margin-bottom: 10px;
+
+            a {color: $color-dark;font-size: 15px;border:1px solid #ddd;}
+        }
+
+        .subjects, .reviews {
+            width: 100%;
+            background-color: white;
+            box-shadow: 0px 4px 4px rgba(0,0,0,0.025);
+            padding: 20px;
+            border-radius: 3px;
+            margin-top: 20px;
+
+            h4 {
+                font-weight: 600;
+                font-size: 22px;
+                font-family: Athiti, 'Josefin Slab', 'Source Sans Pro', Calibri;
+            }
+
+            h5 {
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .subjects-list {
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+
+        .paragraph {
+            font-size: 16px;
+        }
+
+        .reviews {
+
+            .review {
+                margin-top: 20px;
+                background-color: $body-bg;
+                padding: 10px;
+
+                .icon {
+                    float: left;
+                    background-color: $color-blue-presumi;
+                    color: white;
+                    font-size: 22px;
+                    text-transform: uppercase;
+                    padding: 5px 14px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                    margin-top:10px;
+                }
+
+                .content {
+                    .firstname {
+                        font-weight: bold;
+                        font-size: 16px;
+                        span {
+                            font-weight: 400;
+                            font-size: 13px;
+                            color: $color-teal;
+                        }
+                    }
+                }
+            }
+
+            .new-review {
+                margin-top:40px;
+
+                h5 {
+                    font-size: 20px;
+                    font-weight: 500;
+                    font-family: Athiti, 'Josefin Slab', 'Open Sans', Calibri, sans-serif;
+                }
+
+                h6 {
+                    font-size: 13px;
+                    font-weight: bold;
+                    a {
+                        color: $color-red;
+                    }
+                }
+
+                .form-control {
+                    background-color: $body-bg;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $screen-sm) {
+        padding: 0;
+    }
+}

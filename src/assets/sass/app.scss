@@ -1,0 +1,108 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700');
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "bootstrap";
+
+
+@import "utils/mixins";
+@import "utils/alert";
+@import "utils/form";
+@import "utils/flaticon";
+@import "utils/toaster";
+@import "utils/block";
+@import "utils/datepicker";
+
+@include paddingAll;
+@include paddingTop;
+@include paddingBottom;
+@include paddingLeftRight;
+@include marginAll;
+@include marginTop;
+@include marginBottom;
+@include marginLeft;
+@include marginRight;
+@include fontSizes;
+@include fontWeight;
+
+
+/**
+* Flaticon
+*/
+@font-face {
+    font-family: "Flaticon";
+    src: url("./assets/fonts/Flaticon.eot");
+    src: url("./assets/fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+    url("./assets/fonts/Flaticon.woff") format("woff"),
+    url("./assets/fonts/Flaticon.ttf") format("truetype"),
+    url("./assets/fonts/Flaticon.svg#Flaticon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family: "Flaticon";
+        src: url("./assets/fonts/Flaticon.svg#Flaticon") format("svg");
+    }
+}
+
+
+body {
+    background-color: $body-bg;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    font-weight: 500;
+}
+h2 {font-size: 26px}
+
+.trapeze-bg {
+    position: absolute;
+    top: 0px;
+    left: -15%;
+    width: 65%;
+    height: 100%;
+    background-size: cover;
+    @include skewX(15deg);
+    z-index: -1;
+
+    &.trapeze-green {
+        background-color: $color-greener;
+    }
+    &.trapeze-blue {
+        background-color: $color-blue-presumi;
+    }
+    &.trapeze-paypal {
+        background-color: $color-blue-paypal;
+    }
+    &.trapeze-dark {
+        background-color: $color-dark;
+    }
+}
+
+.shadow-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.shadow-2 {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.shadow-3 {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.shadow-4 {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.shadow-5 {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.bold {font-weight: bold}
+.pointer{cursor: pointer;}
+
+@import "modules/select.scss";

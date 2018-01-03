@@ -1,0 +1,217 @@
+
+.text-separator {
+    font-family: 'Open Sans', 'Source Sans Pro', Calibri;
+    width: 100%;
+    margin: 30px 0;
+    color: #acb1b9;
+    text-align: center;
+
+    .separator-text {
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 50%;
+        background-color: #eaebed;
+    }
+
+    .separator-hr {
+        height: 1px;
+        margin-top: -10px;
+        border: 0;
+        background-color: #d8dade;
+        color: #d8dade;
+    }
+}
+
+
+.modal {
+    text-align: center;
+    padding: 0!important;
+
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -4px;
+    },
+
+    &.signin {
+
+        .modal-content {
+            background-color: #fafeff;
+            width: 100%;
+            max-width: 1200px;
+            min-height: 200px;
+            border-radius: 4px;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-family: 'Maven Pro', 'Source Sans Pro', Calibri;
+            color: $color-dark;
+
+            .modal-close {
+                padding-right: 10px;
+                i {font-size: 18px}
+                // &:after {content: '';clear: both;}
+                float: right;
+            }
+
+            .modal-body {
+                padding: 20px;
+
+                h2 {
+                    font-size: 28px;
+                    margin: 0;
+                    font-family: 'Source Sans Pro', Calibri;
+                    color: $color-blue-paypal;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
+
+                label {
+                    font-family: 'Source Sans Pro', Calibri;
+                    font-weight: 400;
+                    font-size: 15px;
+                    color: $color-dark;
+                }
+
+                .form-control {
+                    border: 2px solid #dbe7f2;
+                    background-color: white;
+
+                    &:focus {
+                        border: 2px solid #acc0d3;
+                    }
+                }
+
+            }
+        }
+
+        .sociaux {
+            width: 100%;
+            margin:30px 0;
+            margin-bottom: 20px;
+
+            .s-btn {
+                padding: 12px 20px;
+                text-align: center;
+                color: white;
+                font-weight: 400;
+                font-size: 16px;
+                border-radius: 3px;
+                height: 45px;
+                margin-bottom: 10px;
+                cursor: pointer;
+
+                &.fb {
+                    background-color: $color-blue-facebook;
+                }
+
+                &.google {
+                    background-color: #4885ed;
+                }
+
+                i {
+                    float: left;
+                    font-size: 22px;
+                    margin-top:-5px;
+                }
+            }
+        }
+
+        .links {
+            text-align: center;
+            margin-top:10px;
+            font-size: 16px;
+
+            a {
+                color: $color-blue-paypal;
+            }
+        }
+
+        .menu {
+            margin-top: 20px;
+            text-align: center;
+            a {
+                color: #aaa;
+            }
+        }
+
+        .agree {
+            margin-top: 20px;
+            text-align: center;
+            color: $color-teal;
+            font-size: 16px;
+        }
+    }
+
+    &.lightbox {
+        .modal-content {
+            background-color: #fafeff;
+            width: 100%;
+            max-width: 1200px;
+            border-radius: 0px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            padding: 0;
+
+            .modal-body {
+                padding: 0;
+
+                .lightbox {
+                    width: 100%;
+                    position: relative;
+
+                    .btn-close {
+                        position: absolute;
+                        bottom: 10px;
+                        right: 10px;
+                    }
+
+                    img { width: 100% }
+                }
+            }
+        }
+    }
+
+    &.upload {
+        .modal-content {
+            .dropbox {
+                outline: 2px dashed grey; /* the dash box */
+                outline-offset: -10px;
+                background: #fff;
+                color: dimgray;
+                padding: 10px 10px;
+                min-height: 100px; /* minimum height */
+                position: relative;
+                cursor: pointer;
+
+                &:hover {
+                    background: #fff; /* when mouse over to the drop zone, change color */
+                }
+
+                p {
+                    font-size: 1.2em;
+                    text-align: center;
+                    padding: 50px 0;
+                }
+            }
+
+            .input-file {
+                opacity: 0; /* invisible but it's there! */
+                width: 100%;
+                height: 100px;
+                position: absolute;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
+
+// vertically-centered modal
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}

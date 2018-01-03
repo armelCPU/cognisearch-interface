@@ -1,0 +1,35 @@
+.site-footer {
+    background-color: #0b2047;
+    width: 100%;
+    min-height: 60px;
+    margin-top:60px;
+
+    .brand-holder {
+        // background-color: $color-blue-facebook;
+        padding: 12px 0;
+        line-height: 26px;
+    }
+
+
+    .brand {
+        font-size: 18px;
+        float: left;
+        margin-right: 20px;
+
+        a {
+            color: #eee;
+            text-transform: uppercase;
+        }
+    }
+
+    .menu {
+        li {
+            font-weight: 300;
+            font-size: 15px;
+
+            a {
+                color: #fff;
+            }
+        }
+    }
+}
