@@ -2,53 +2,53 @@
      <div class="event-item">
 
          <div class="details">
-             <div class="name" v-if="event.hasOwnProperty('name')">
+             <div class="name" v-if="event.hasOwnProperty('name') && event.name != null">
                  {{ position +1 }} - {{ event.name }}
              </div>
 
-             <div class="metas" v-if="event.hasOwnProperty('categories')">
+             <div class="metas" v-if="event.hasOwnProperty('categories') && event.categories != null">
                  <ul class="list-inline">
                      <li><i class="ion-bag"></i></li>
                      <li v-for="cat in event.categories">{{ cat }},</li>
                  </ul>
              </div>
 
-             <div class="metas" v-if="event.hasOwnProperty('date')">
+             <div class="metas" v-if="event.hasOwnProperty('date') && event.date != null">
                  <ul class="list-inline">
                      <li><i class="ion-calendar"></i></li>
                      <li>{{ event.date }}</li>
                  </ul>
              </div>
 
-             <div class="metas" v-if="event.hasOwnProperty('venue')">
+             <div class="metas" v-if="event.hasOwnProperty('venue') && event.venue != null">
                  <ul class="list-inline">
                      <li><i class="ion-android-locate"></i></li>
                      <li>{{ event.venue.name }}</li>
                  </ul>
              </div>
 
-             <div class="metas" v-if="event.hasOwnProperty('hour')">
+             <div class="metas" v-if="event.hasOwnProperty('hour') && event.hour != null">
                  <ul class="list-inline">
                      <li><i class="ion-ios-clock-outline"></i></li>
                      <li>{{ event.hour }}</li>
                  </ul>
              </div>
 
-             <div class="metas" v-if="event.hasOwnProperty('performers')">
+             <div class="metas" v-if="event.hasOwnProperty('performers') && event.performers != null">
                  <ul class="list-inline">
                      <li><i class="ion-person-stalker"></i></li>
                      <li v-for="p in event.performers"><a :href="p.uri">{{ p.name }},</a></li>
                  </ul>
              </div>
 
-             <div class="metas" v-if="event.hasOwnProperty('duration')">
+             <div class="metas" v-if="event.hasOwnProperty('duration') && event.duration != null">
                  <ul class="list-inline">
                      <li><i class="ion-clock"></i></li>
                      <li>{{ event.duration }}</li>
                  </ul>
              </div>
 
-             <div class="metas" v-if="event.hasOwnProperty('source')">
+             <div class="metas" v-if="event.hasOwnProperty('source') && event.source != null">
                  <ul class="list-inline">
                      <li><i class="ion-ios-cloud-outline"></i></li>
                      <li v-for="(s, i) in event.source"><a :href="s">Source N°{{ i+1 }},</a></li>

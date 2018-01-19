@@ -9,10 +9,10 @@
 <script>
 export default {
 name: 'home',
-data () {
-    return {
-        showResult: true
+    data () {
+        return {
+            showResult: true
+        }
     }
-},
 }
 </script>

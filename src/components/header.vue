@@ -5,7 +5,7 @@
                    <h1>Critères de recherche</h1>
                </div>
                <div class="search-container">
-                   <form class="form" @submit.prevent="verifications()">
+                   <form class="form">
                        <div class="quick-search">
 
                            <div class="search">
@@ -122,7 +122,7 @@
                                                       <!-- Recherche et options -->
                            <div class="row mt-20">
                                <div class="col-sm-4 col-md-4">
-                                   <button type="submit" class="btn btn-block btn-lg btn-green">
+                                   <button type="submit" class="btn btn-block btn-lg btn-green" @click="asyncSearch()">
                                        Rechercher
                                    </button>
                                </div>
@@ -144,6 +144,7 @@
 <script>
 import Multiselect from 'vue-multiselect'
 import Datepicker from 'vuejs-datepicker'
+import axios from 'axios';
 
 export default {
   name: 'Home',
@@ -169,19 +170,48 @@ export default {
   components: { Multiselect, Datepicker },
 
   methods: {
-      asyncFind (query) {
-         if (query.length > 1) {
-             this.isLoading = true
-             axios.get('/api/categories?keywords=' + query)
-             .then(response => {
-                 this.categories = response.data
-                 this.isLoading = false
-             })
-             .catch(error => {
-                 console.log(error)
-                 this.isLoading = false
-             })
-         }
+     asyncGetCategories(){
+         axios.get('http://localhost:8181/models/categories')
+         .then(response => {
+             this.allCategories = response.data.results;
+             this.categories = this.allCategories.splice()
+         })
+         .catch(error => {
+            console.log('Error ' + error);
+         })
+     },
+
+     asyncGetPerformers(){
+         axios.get('http://localhost:8181/models/performers')
+         .then(response => {
+             this.allPerformers = response.data.results;
+             this.performers = this.allPerformers.splice()
+         })
+         .catch(error => {
+            console.log('Error ' + error);
+         })
+     },
+
+     asyncGetPlaces(){
+         axios.get('http://localhost:8181/models/places')
+         .then(response => {
+             this.allPlaces = response.data.results;
+             this.places = this.allPlaces.splice()
+         })
+         .catch(error => {
+            console.log('Error ' + error);
+         })
+     },
+
+     asyncSearch(){
+         this.buildParams()
+         axios.get(this.buildURL('http://localhost:8181/search/simple'))
+         .then(response => {
+             this.$store.commit('SET_RESULTS', response.data.results)
+         })
+         .catch(error => {
+            console.log('Error ' + error);
+        })
      },
 
      /**
@@ -191,19 +221,19 @@ export default {
       */
      findCategories (query) {
          this.categories = this.allCategories.filter(c => {
-             return c.name.toLowerCase().includes(query)
+             return c.name.toLowerCase().includes(query.toLowerCase())
          })
      },
 
      findPlaces (query) {
          this.places = this.allPlaces.filter(c => {
-             return c.name.toLowerCase().includes(query)
+             return c.name.toLowerCase().includes(query.toLowerCase())
          })
      },
 
      findPerformers (query) {
          this.performers = this.allPerformers.filter(c => {
-             return c.name.toLowerCase().includes(query)
+             return c.name.toLowerCase().includes(query.toLowerCase())
          })
      },
 
@@ -215,9 +245,64 @@ export default {
          return `${count} encore plus`
      },
 
-     verifications () {
+    buildParams() {
+        /* Building the venue parameter */
+        if(this.place.length > 0) {
+            let v = ''
+            if (this.place[0].points.length <= 1) {
+                v += (this.place[0].points[0].lat + 'M' + this.place[0].points[0].lon);
+            }
+            else {
+                for( let i = 0; i < this.place[0].points.length -1 ; i++){
+                    v+= (this.place[0].points[i].lat + 'M' + this.place[0].points[i].lon + '@');
+                }
+                v += (this.place[0].points[this.place[0].points.length -1].lat + 'M' + this.place[0].points[this.place[0].points.length -1].lon);
+            }
+            this.search.venue = v;
+        }
 
-     },
+        /* Building the category parameter */
+        if (this.category.length > 0) {
+            let cat = ''
+            for(let i=0; i < this.category.length - 1; i++) {
+                cat += (this.category[i].uri.replace('#', '$') + '@')
+            }
+            cat += this.category[this.category.length - 1].uri.replace('#', '$')
+            this.search.category = cat
+        }
+
+        /* Building the performers parameter */
+        if (this.performer.length > 0) {
+            let perf = ''
+            for(let i=0; i < this.performer.length - 1; i++) {
+                perf += (this.performer[i].name + '@')
+            }
+            perf += this.performer[this.performer.length - 1].name
+            this.search.performers = perf
+        }
+
+        /* Building the date parameter */
+        if (this.state.date.getUTCFullYear() >= 2018){
+            let day = this.state.date.getDate() < 10 ? '0' + this.state.date.getDate() : this.state.date.getDate()
+            let month = (this.state.date.getMonth() + 1) < 10 ? '0' + (this.state.date.getMonth() + 1) : (this.state.date.getMonth() + 1)
+            this.search.date = this.state.date.getUTCFullYear() + '-' + month + '-' + day
+        }
+    },
+
+    buildURL(baseURL){
+        let url = baseURL
+        let keys = Object.keys(this.search)
+
+        if ( keys.length == 0)
+            return baseURL
+
+        url +='?'
+        keys.forEach( e => {
+            url += (e + '=' + this.search[e] + '&')
+        })
+        // removing the last &
+        return url.substring(0, url.length-1)
+    }
  },
 
  mounted () {
@@ -226,36 +311,37 @@ export default {
      }
 
      this.state = {
-         date: new Date(2016, 9,  16)
+         date: new Date(2017, 12,  16)
      }
 
-     this.allCategories = [
+     /*
          {id: 1, name: 'Concerts', uri: 'http://www.owl-ontologies.com/categoriesEvt.owl#Concert'},
          {id: 2, name: 'Théâtre', uri: 'http://www.owl-ontologies.com/categoriesEvt.owl#Theatre'},
          {id: 3, name: 'Festival', uri: 'http://www.owl-ontologies.com/categoriesEvt.owl#FestivalDanse'},
          {id: 4, name: 'Musique Classique', uri: 'http://www.owl-ontologies.com/categoriesEvt.owl#Classique'}
      ]
+     */
 
-     this.categories = this.allCategories.splice()
+     this.asyncGetCategories()
+    // copie du tableau
 
-     this.allPlaces = [
+     /*this.allPlaces = [
          {id: 1, name: 'Paris'},
          {id: 2, name: 'Pau'},
          {id: 3, name: 'Bataclan'},
          {id: 4, name: 'Théâtre Magado'}
-     ]
+     ]*/
+     this.asyncGetPlaces()
 
-     this.places = this.allPlaces.splice()
-
-     this.allPerformers = [
+     /*this.allPerformers = [
          {id: 1, name: 'Eddy Malou'},
          {id: 2, name: 'DJ Cerveau'},
          {id: 3, name: 'Soprano'},
          {id: 4, name: 'Equipe des cinglés du Dimanche'}
-     ]
+     ]*/
 
-     this.performers = this.allPerformers.splice()
-  }
+     this.asyncGetPerformers()
+ }
 }
 </script>
 
